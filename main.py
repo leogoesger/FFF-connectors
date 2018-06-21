@@ -1,4 +1,3 @@
-import rasterio
-from classes.PerformanceMain import PerformanceMain
+from classes.hydraulic_performance.PerformanceMain import PerformanceMain
 
-a = PerformanceMain()
+PerformanceMain()

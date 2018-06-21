@@ -2,7 +2,7 @@ import inquirer
 
 from utils.constants import CVIOLET, CEND
 from utils.helpers import write_dict_to_csv
-from classes.PerformanceFunc import PerformanceFunc
+from classes.hydraulic_performance.PerformanceFunc import PerformanceFunc
 
 
 class PerformanceMain:

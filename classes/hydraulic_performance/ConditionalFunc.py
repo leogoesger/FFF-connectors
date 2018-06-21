@@ -3,8 +3,8 @@ import inquirer
 import rasterio
 
 from utils.helpers import will_it_float
-from calculations.reclassify_raster import reclassify_raster
-from calculations.get_functional_rasters import get_functional_rasters
+from calculations.hydraulic_performance.reclassify_raster import reclassify_raster
+from calculations.hydraulic_performance.get_functional_rasters import get_functional_rasters
 
 
 class ConditionalFunc:
