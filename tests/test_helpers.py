@@ -2,7 +2,7 @@ from os import sys, path
 import unittest
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from utils.helpers import flatten_list, will_it_float
+from utils.helpers import flatten_list, will_it_float, count_truthy
 
 
 class TestHelperMethods(unittest.TestCase):
@@ -31,6 +31,11 @@ class TestHelperMethods(unittest.TestCase):
 
         self.assertEqual(will_it_float(
             test_case_1), True)
+
+    def test_count_truthy(self):
+        test_case_1 = [True, False, False]
+        self.assertEqual(count_truthy(
+            test_case_1), 1)
 
 
 if __name__ == '__main__':
