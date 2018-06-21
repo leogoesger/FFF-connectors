@@ -6,7 +6,7 @@ from utils.helpers import will_it_float
 from calculations.reclassify_raster import reclassify_raster
 
 
-class ConditionalFunction:
+class ConditionalFunc:
     def __init__(self, spatial_bounding):
         self.spatial_bounding = spatial_bounding
         self.hydrologic_variable = ''
@@ -14,6 +14,7 @@ class ConditionalFunction:
         self.functional_bin = None
         self.reclassified_rasters = {}
         self.get_user_inputs()
+        self.reclassify_raster()
 
     def get_user_inputs(self):
         # inquirer questions for hydrologic_variable, binning, and functional_bin
@@ -42,6 +43,7 @@ class ConditionalFunction:
 
     def reclassify_raster(self):
         # inspect all raw files and reclassify ones match
+
         for file in listdir("raw"):
             file_info = path.splitext(file)[0].split('_')
 
