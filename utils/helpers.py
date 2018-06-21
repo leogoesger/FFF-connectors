@@ -1,3 +1,4 @@
+import csv
 from functools import reduce
 
 
@@ -15,3 +16,11 @@ def flatten_list(l):
 
 def count_truthy(list):
     return reduce(lambda x, y: x + 1 if(y) else x, list, 0)
+
+
+def write_dict_to_csv(dict, file_name):
+    keys = dict[0].keys()
+    with open(file_name, 'wb') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(dict)
