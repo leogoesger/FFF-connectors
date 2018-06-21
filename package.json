@@ -1,0 +1,15 @@
+{
+    "name": "fff-connectors",
+    "version": "1.0.0",
+    "description": "fff project to UC Davis",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "install": "pip install -r requirements.txt",
+        "test": "python -m unittest discover -v"
+    },
+    "keywords": [],
+    "author": "Leo Qiu",
+    "license": "ISC"
+}

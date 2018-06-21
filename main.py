@@ -1,4 +1,4 @@
 import rasterio
-from classes.ConditionalFunction import ConditionalFunction
+from classes.PerformanceFunc import PerformanceFunc
 
-a = ConditionalFunction('c').reclassify_raster()
+a = PerformanceFunc().print_result()

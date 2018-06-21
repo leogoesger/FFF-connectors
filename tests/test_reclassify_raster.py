@@ -22,7 +22,7 @@ class TestReclassifyRasterMethods(unittest.TestCase):
     def test_upper_bound(self):
         self.assertEqual(map_column_to_binning(1.5, [0, 1, 1.5]), 3)
 
-    def classify_raster(self):
+    def test_classify_raster(self):
         self.assertEqual(reclassify_raster(
             [[-1, 0, 0.5], [1, 1.5, 2]], [0, 1, 2]), [[0, 1, 1], [2, 2, 3]])
 
