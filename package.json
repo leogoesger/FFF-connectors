@@ -6,6 +6,7 @@
         "test": "tests"
     },
     "scripts": {
+        "setup": "python3 -m venv my-virtualenv",
         "start": "python main.py",
         "install": "pip install -r requirements.txt",
         "test": "python -m unittest discover -v",
@@ -13,5 +14,5 @@
     },
     "keywords": [],
     "author": "Leo Qiu",
-    "license": "ISC"
+    "license": "MIT"
 }
