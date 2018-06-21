@@ -20,7 +20,7 @@ def count_truthy(list):
 
 def write_dict_to_csv(dict, file_name):
     keys = dict[0].keys()
-    with open(file_name, 'wb') as output_file:
+    with open(file_name, 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(dict)

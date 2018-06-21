@@ -2,6 +2,8 @@ language: python
 python:
   - "3.6"
 # command to install dependencies
+before_install:
+  - sudo apt-get install python-numpy gdal-bin libgdal-dev
 install:
   - yarn install
 # command to run tests
