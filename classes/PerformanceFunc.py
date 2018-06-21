@@ -2,6 +2,7 @@ import inquirer
 
 from classes.ConditionalFunc import ConditionalFunc
 from utils.constants import CVIOLET, CEND
+from calculations.combine_functional_rasters import combine_functional_rasters
 
 
 class PerformanceFunc:
@@ -10,6 +11,7 @@ class PerformanceFunc:
         self.spatial_boundary = ''
         self.adding_conditional_status = True
         self.get_user_input()
+        self.add_conditional_function()
 
     def get_user_input(self):
       # Spatial Boundary Input
@@ -21,8 +23,10 @@ class PerformanceFunc:
                           ),
         ]
 
-        self.spatial_boundary = inquirer.prompt(
+        spatial_boundary = inquirer.prompt(
             questions)['hydrologic_variable'][0]
+        self.spatial_boundary = (
+            '' if spatial_boundary == ' ' else spatial_boundary)
 
     def print_added_function(self, conditional_function):
         print("")
@@ -32,7 +36,7 @@ class PerformanceFunc:
             conditional_function.hydrologic_variable))
         print(" * binning: {}".format(conditional_function.binning))
         print(" * functional_bin: {}".format(
-            conditional_function.functional_bin))
+            conditional_function.functional_bin_number))
         print("")
 
     def update_adding_conditional_status(self):
@@ -57,5 +61,5 @@ class PerformanceFunc:
                 conditional_function)  # print added function
             self.update_adding_conditional_status()
 
-    def create_performance_matrix(self):
-        print("hello")
+    def combine_functional_rasters(self):
+        combine_functional_rasters(self.raster_collection)
