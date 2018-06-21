@@ -13,9 +13,11 @@ class PerformanceFunc:
         self.spatial_boundary = ''
         self.adding_conditional_status = True
         self.combined_rasters = {}
+        self.performance_counts = {}
         self.get_user_input()
         self.add_conditional_function()
         self.combine_functional_rasters()
+        self.create_performance_count_table()
 
     def get_user_input(self):
       # Spatial Boundary Input
@@ -84,6 +86,7 @@ class PerformanceFunc:
         self.combined_rasters = combine_functional_rasters(
             self.raster_collection, self.spatial_boundary, self.conditional_relationship)
 
-    def print_result(self):
+    def create_performance_count_table(self):
         for key in self.combined_rasters:
-            print(key, count_truthy(self.combined_rasters[key]))
+            self.performance_counts[key] = count_truthy(
+                self.combined_rasters[key])

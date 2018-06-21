@@ -1,4 +1,4 @@
 import rasterio
-from classes.PerformanceFunc import PerformanceFunc
+from classes.PerformanceMain import PerformanceMain
 
-a = PerformanceFunc().print_result()
+a = PerformanceMain()
