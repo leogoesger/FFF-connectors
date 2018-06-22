@@ -2,7 +2,7 @@ from os import sys, path
 import unittest
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from calculations.reclassify_raster import map_column_to_binning, reclassify_raster
+from calculations.hydraulic_performance.reclassify_raster import map_column_to_binning, reclassify_raster
 
 
 class TestReclassifyRasterMethods(unittest.TestCase):

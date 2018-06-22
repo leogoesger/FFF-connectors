@@ -2,7 +2,7 @@ from os import sys, path
 import unittest
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from calculations.get_functional_rasters import get_functional_rasters, raster_to_functional_raster
+from calculations.hydraulic_performance.get_functional_rasters import get_functional_rasters, raster_to_functional_raster
 
 
 class TestGetFunctionalRasterMethods(unittest.TestCase):
@@ -13,6 +13,9 @@ class TestGetFunctionalRasterMethods(unittest.TestCase):
                        "raster_2": [[1, 0, 0, 0], [1, 0, 1, 0]]}
         solu_case_1 = {"raster_1": [[False, True, False, False], [True, False, False, False]],
                        "raster_2": [[True, False, False, False], [True, False, True, False]]}
+
+        print("++++++++++++++++++++")
+        print(get_functional_rasters(test_case_1, test_case_1_num))
 
         self.assertEqual(get_functional_rasters(
             test_case_1, test_case_1_num), solu_case_1)

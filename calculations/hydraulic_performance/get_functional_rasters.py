@@ -8,7 +8,7 @@ def get_functional_rasters(rasters, number):
 
 
 def raster_to_functional_raster(raster, number):
-    return map(lambda raster_row: (
+    return list(map(lambda raster_row: (
         [True if raster_col == number else False
          for raster_col in raster_row]),
-        raster)
+        raster))
