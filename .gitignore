@@ -3,4 +3,5 @@ my-virtualenv
 raw
 *.pyc
 node_modules
-calc-result
+files_input
+files_output

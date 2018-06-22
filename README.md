@@ -23,9 +23,7 @@ Docker provides an easy installation process to get the project running in your 
     cd FFF-connectors/
     ```
 
-3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw` folder
-
-4.  `cd` into the path of `FFF-connections` directory, then run `shell` script
+3.  `cd` into the path of `FFF-connections` directory, then run `shell` script
 
     ```
     cd path/to/FFF-connectors
@@ -43,9 +41,7 @@ Docker provides an easy installation process to get the project running in your 
 
 2.  Open the folder from [Spyder](https://anaconda.org/anaconda/spyder)
 
-3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
-
-4.  You may need to install these packages if you do not already have them locally
+3.  You may need to install these packages if you do not already have them locally
 
     ```
     six==1.11.0
@@ -53,7 +49,7 @@ Docker provides an easy installation process to get the project running in your 
     rasterio==0.36.0
     ```
 
-5.  Click on `main.py` and `run`
+4.  Click on `main.py` and `run`
 
 ### III. With Mac OS
 
@@ -83,8 +79,6 @@ Docker provides an easy installation process to get the project running in your 
     ```
     pip install -r requirement.txt
     ```
-
-5.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
 
 ### IV. With Windows
 
@@ -134,8 +128,6 @@ Docker provides an easy installation process to get the project running in your 
     ```
     pip install -r requirements.txt
     ```
-
-6.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
 
 ## Run Script
 

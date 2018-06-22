@@ -1,4 +1,6 @@
+import os
 import csv
+import errno
 from functools import reduce
 
 
@@ -30,3 +32,12 @@ def write_dict_to_csv(dict, file_name):
 def transpose_csv(file_name):
     a = zip(*csv.reader(open(file_name, "r")))
     csv.writer(open(file_name, "w")).writerows(a)
+
+
+def create_folders(folders):
+    for folder in folders:
+        try:
+            os.makedirs(folder)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
