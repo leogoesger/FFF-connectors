@@ -40,5 +40,14 @@ class PerformanceMain:
             self.update_add_status()
 
     def write_dict_to_csv(self):
-        write_dict_to_csv(self.performance_count_collection,
+        # input dict key "t6_5_x_c" -> "t6_5" to write to csv to prevent conflicting keys
+        count_collection = [transform_key(
+            count_dict) for count_dict in self.performance_count_collection]
+        write_dict_to_csv(count_collection,
                           'calc-result/performance_table.csv')
+
+
+def transform_key(dict):
+    for key in list(dict.keys()):
+        dict[key[:4]] = dict.pop(key)
+    return dict

@@ -24,3 +24,9 @@ def write_dict_to_csv(dict, file_name):
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(dict)
+    transpose_csv(file_name)
+
+
+def transpose_csv(file_name):
+    a = zip(*csv.reader(open(file_name, "r")))
+    csv.writer(open(file_name, "w")).writerows(a)
