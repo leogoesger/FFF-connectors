@@ -161,6 +161,8 @@ Docker provides an easy installation process to get the project running in your 
 
 ## Test
 
+First enter `virtualenv` with previously discussed steps in project directory.
+
 ```
 npm test
 ```
