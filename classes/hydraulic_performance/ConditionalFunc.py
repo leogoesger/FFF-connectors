@@ -47,6 +47,11 @@ class ConditionalFunc:
     def reclassify_rasters(self):
         # inspect all raw files and reclassify ones match
         for file in listdir("raw"):
+
+            # remove all files not end with tif
+            if not (path.splitext(file)[1] == '.tif'):
+                continue
+
             file_info = path.splitext(file)[0].split('_')
 
             # check to see file name has the same hydro variable and spatial bounding
