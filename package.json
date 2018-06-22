@@ -10,7 +10,7 @@
         "start": "python main.py",
         "install": "pip install -r requirements.txt",
         "test": "python -m unittest discover -v",
-        "folder": "mkdir calc-result"
+        "folder": "mkdir -p calc-result raw"
     },
     "keywords": [],
     "author": "Leo Qiu",
