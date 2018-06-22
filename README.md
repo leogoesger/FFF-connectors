@@ -32,7 +32,7 @@ Docker provides an easy installation process to get the project running in your 
     ./build.sh
     ```
 
-### II. Using [Anaconda Spyder](https://anaconda.org/anaconda/spyder) in 5 simple steps (Mac OS and Windows)
+### II. Using [Anaconda Spyder](https://anaconda.org/anaconda/spyder) (Mac OS and Windows)
 
 1.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands) or download the entire repo from [Github](https://github.com/leogoesger/FFF-connectors)
 
@@ -45,7 +45,7 @@ Docker provides an easy installation process to get the project running in your 
 
 3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
 
-4.  You may need to have these packages if you do not already have them
+4.  You may need to install these packages if you do not already have them locally
 
     ```
     six==1.11.0
@@ -55,7 +55,7 @@ Docker provides an easy installation process to get the project running in your 
 
 5.  Click on `main.py` and `run`
 
-### III. Getting Started in 5 simple steps (Mac OS)
+### III. With Mac OS
 
 1.  Install [Python3](https://www.python.org/downloads/), [Git](https://git-scm.com/download/) and a [text editor](https://www.sublimetext.com/3) of your choice.
 2.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands)
@@ -86,7 +86,7 @@ Docker provides an easy installation process to get the project running in your 
 
 5.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
 
-### IV. Getting Started in 6 steps (Windows)
+### IV. With Windows
 
 1.  Install [Python3](https://www.python.org/downloads/), [Git](https://git-scm.com/download/win) and a [text editor](https://www.sublimetext.com/3) of your choice.
 2.  Add Python to [System Path](https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/)
