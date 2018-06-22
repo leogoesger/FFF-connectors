@@ -6,13 +6,13 @@
 
 This project uses [Python3](https://www.python.org/), [NPM](https://www.npmjs.com/get-npm)(optional) and [Docker](https://docs.docker.com/install/)
 
-## Setups
+## Setup
 
-Docker is the most prefered way to setting up the project. It will resolve pretty much all compatibility issues with different OS.
+Docker is the preferred way of setting up the project. It will resolve most cross OS compatibility issues.
 
 ### I. Using Docker (Recommended Way)
 
-Docker provides an easy installation process to get this app running in your local machine with zero-configuration.
+Docker provides an easy installation process to get the project running in your local machine with near zero-configuration.
 
 1.  Install [Docker](https://docs.docker.com/install/)
 
@@ -23,9 +23,9 @@ Docker provides an easy installation process to get this app running in your loc
     cd FFF-connectors/
     ```
 
-3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
+3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw` folder
 
-4.  Run `shell` script in the working directory with command prompt or terminal
+4.  `cd` into the path of `FFF-connections` directory, then run `shell` script
 
     ```
     cd path/to/FFF-connectors
@@ -100,7 +100,7 @@ Docker provides an easy installation process to get this app running in your loc
         or
 
         ```
-        C:\Users\your-name\AppData\Local\Programs\Python\Python36-32
+        C:\Users\your-namprojectData\Local\Programs\Python\Python36-32
         ```
 
     -   Follow this [link](https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/) from step 2 to the end.
@@ -108,7 +108,7 @@ Docker provides an easy installation process to get this app running in your loc
 
         ```
         Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28)
-        [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+        [GCC 4.2.1projectle Inc. build 5666) (dot 3)] on darwin
         Type "help", "copyright", "credits" or "license" for more information.
         >>>
         ```
