@@ -4,9 +4,35 @@
 
 ## About
 
-This project uses [Python3](https://www.python.org/) and [NPM](https://www.npmjs.com/get-npm)(optional)
+This project uses [Python3](https://www.python.org/), [NPM](https://www.npmjs.com/get-npm)(optional) and [Docker](https://docs.docker.com/install/)
 
-## Using [Anaconda Spyder](https://anaconda.org/anaconda/spyder) in 4 simple steps (Mac OS and Windows)
+## Setups
+
+Docker is the most prefered way to setting up the project. It will resolve pretty much all compatibility issues with different OS.
+
+### I. Using Docker (Recommended Way)
+
+Docker provides an easy installation process to get this app running in your local machine with zero-configuration.
+
+1.  Install [Docker](https://docs.docker.com/install/)
+
+2.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands) or download the entire repo from [Github](https://github.com/leogoesger/FFF-connectors)
+
+    ```
+    git clone https://github.com/leogoesger/FFF-connectors
+    cd FFF-connectors/
+    ```
+
+3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
+
+4.  Run `shell` script in the working directory with command prompt or terminal
+
+    ```
+    cd path/to/FFF-connectors
+    ./build.sh
+    ```
+
+### II. Using [Anaconda Spyder](https://anaconda.org/anaconda/spyder) in 5 simple steps (Mac OS and Windows)
 
 1.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands) or download the entire repo from [Github](https://github.com/leogoesger/FFF-connectors)
 
@@ -17,7 +43,9 @@ This project uses [Python3](https://www.python.org/) and [NPM](https://www.npmjs
 
 2.  Open the folder from [Spyder](https://anaconda.org/anaconda/spyder)
 
-3.  You may need to have these packages if you do not already have them
+3.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
+
+4.  You may need to have these packages if you do not already have them
 
     ```
     six==1.11.0
@@ -25,9 +53,9 @@ This project uses [Python3](https://www.python.org/) and [NPM](https://www.npmjs
     rasterio==0.36.0
     ```
 
-4.  Click on `main.py` and `run`
+5.  Click on `main.py` and `run`
 
-## Getting Started in 5 simple steps (Mac OS)
+### III. Getting Started in 5 simple steps (Mac OS)
 
 1.  Install [Python3](https://www.python.org/downloads/), [Git](https://git-scm.com/download/) and a [text editor](https://www.sublimetext.com/3) of your choice.
 2.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands)
@@ -58,7 +86,7 @@ This project uses [Python3](https://www.python.org/) and [NPM](https://www.npmjs
 
 5.  Create two folders: `raw` and `calc-result`, and move all `.tiff` files to `raw folder`
 
-## Getting Started in 6 steps (Windows)
+### IV. Getting Started in 6 steps (Windows)
 
 1.  Install [Python3](https://www.python.org/downloads/), [Git](https://git-scm.com/download/win) and a [text editor](https://www.sublimetext.com/3) of your choice.
 2.  Add Python to [System Path](https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/)
@@ -111,7 +139,15 @@ This project uses [Python3](https://www.python.org/) and [NPM](https://www.npmjs
 
 ## Run Script
 
-1.  In project directory
+1.  With [Docker](https://docs.docker.com/install/)
+
+    ```
+    ./run.sh
+    ```
+
+2.  With Spyder, click on main.py and `run`
+
+3.  All others, navigate to project directory, use `npm` with
 
     ```
     npm start
@@ -141,7 +177,7 @@ Use [JIRA](http://watermgmt.ucdavis.edu/) to keep upload error message, a screen
 
 ## Options
 
-[iTerm](https://www.iterm2.com/): iTerm2 is a replacement for Terminal
+[iTerm](https://www.iterm2.com/): iTerm2 is a replacement for Terminal in MacOS
 
 ## License
 

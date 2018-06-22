@@ -10,7 +10,8 @@
         "start": "python main.py",
         "install": "pip install -r requirements.txt",
         "test": "python -m unittest discover -v",
-        "folder": "mkdir -p calc-result raw"
+        "folder": "mkdir -p calc-result raw",
+        "run:container": "docker run -it --rm --mount type=bind,source=\"$(pwd)\",target=/src ucd-fff-connector bash -c 'cd src; python main.py'"
     },
     "keywords": [],
     "author": "Leo Qiu",

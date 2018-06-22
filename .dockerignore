@@ -1,0 +1,5 @@
+.vscode
+calc-result/*.csv
+my-virtualenv
+node_modules
+tests
