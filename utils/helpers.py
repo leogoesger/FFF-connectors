@@ -41,3 +41,11 @@ def create_folders(folders):
         except OSError as e:
             if e.errno != errno.EEXIST:
                 raise
+
+
+def get_position_of_sorted_list(list, element):
+    # Given a sorted list and element, return the position fitting the element + 1
+    for index, value in enumerate(list):
+        if element <= value:
+            return index + 1
+    return len(list)

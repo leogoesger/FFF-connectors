@@ -14,12 +14,18 @@ class Introduction:
             inquirer.List('script',
                           message="Which script to run?",
                           choices=['hydraulic performance',
-                                   'hydraulic suitability timeserie', ],
+                                   'hydraulic suitability TS', ],
                           ),
         ]
         answers = inquirer.prompt(questions)
-        self.script = answers['script']
+        self.script = answers['script'].replace(" ", "_")
 
     def input_output_folder_structure(self):
-        create_folders(['files_input/{}'.format(self.script.replace(" ", "_")),
-                        'files_output/{}'.format(self.script.replace(" ", "_"))])
+        input_folder = ['files_input/{}'.format(self.script)]
+
+        if(self.script == 'hydraulic_suitability_TS'):
+            input_folder.extend((input_folder[0] + '/flow_bins',
+                                 input_folder[0] + '/suitability_table'))
+
+        output_folder = 'files_output/{}'.format(self.script)
+        create_folders([*input_folder, output_folder])
