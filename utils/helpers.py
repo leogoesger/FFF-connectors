@@ -43,9 +43,10 @@ def create_folders(folders):
                 raise
 
 
-def get_position_of_sorted_list(list, element):
-    # Given a sorted list and element, return the position fitting the element + 1
-    for index, value in enumerate(list):
-        if element <= value:
-            return index + 1
-    return len(list)
+def read_csv_to_arrays(file_path, header=False):
+    with open(file_path, 'r') as csv_file:
+        reader = csv.reader(csv_file, delimiter=',')
+        if header:
+            return [row for index, row in enumerate(reader) if index > 0]
+        else:
+            return [row for row in reader]
