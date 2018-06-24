@@ -1,6 +1,7 @@
 import os
 import csv
 import errno
+from os import path
 from functools import reduce
 
 
@@ -44,9 +45,17 @@ def create_folders(folders):
 
 
 def read_csv_to_arrays(file_path, header=False):
-    with open(file_path, 'r') as csv_file:
-        reader = csv.reader(csv_file, delimiter=',')
-        if header:
-            return [row for index, row in enumerate(reader) if index > 0]
-        else:
-            return [row for row in reader]
+    if(path.splitext(file_path)[1] == '.csv'):
+        with open(file_path, 'r') as csv_file:
+            reader = csv.reader(csv_file, delimiter=',')
+            if header:
+                return [row for index, row in enumerate(reader) if index > 0]
+            else:
+                return [row for row in reader]
+
+
+def write_arrays_to_csv(arrays, file_path):
+    with open(file_path, "w") as output:
+        writer = csv.writer(output, delimiter=',', lineterminator='\n')
+        for val in arrays:
+            writer.writerow(val)

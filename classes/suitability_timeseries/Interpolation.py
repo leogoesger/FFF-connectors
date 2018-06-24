@@ -6,16 +6,20 @@ from utils.constants import CWHITE, CREDBG, CEND
 from utils.helpers import read_csv_to_arrays, flatten_list
 
 # Interpolation class will read data from flow_bins and suitability_table and
-# generate one interpolation function for each flow_bins file
+# generate one interpolation function for each flow_bins file.
+# Out interpolation dict has the following format:
+# {T5: [ip1, ip2], T6: [ip1, ip2]}
 
 
 class Interpolation:
     def __init__(self):
         self.flow_bins_folder = 'files_input/hydraulic_suitability_TS/flow_bins'
         self.suitability_file = 'files_input/hydraulic_suitability_TS/suitability_table/performance_table.csv'
-        self.interpolations = []  # handle multiple functions
+        self.interpolations = {}  # handle multiple functions
         self.flow_bins = {}
         self.suitability_tables = []  # handle multiple functions
+
+        # function calls
         self.read_flow_bins()
         self.read_suitability_table()
         self.get_interpolation_func()
@@ -66,11 +70,11 @@ class Interpolation:
             exit()
 
     def get_interpolation_func(self):
-        for perf_func in self.suitability_tables:
-            self.interpolations.append({})
-            for key in perf_func:
-                self.interpolations[-1][key] = (ip.UnivariateSpline(
-                    self.flow_bins[key], perf_func[key], k=3, s=3))
+        for key in self.suitability_tables[0]:
+            self.interpolations[key] = []
+            for perf_func in self.suitability_tables:
+                self.interpolations[key].append(ip.UnivariateSpline(
+                    self.flow_bins[key], perf_func[key], k=1.5, s=1.2))
 
 
 def extract_data_from_flow_bins(csv_arrays):
