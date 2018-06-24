@@ -9,7 +9,9 @@
         "setup": "python3 -m venv my-virtualenv",
         "start": "python main.py",
         "install": "pip install -r requirements.txt",
-        "test": "python -m unittest discover -v"
+        "test": "python -m unittest discover -v",
+        "coverage": "coverage run -m unittest discover",
+        "coverage:report": "coverage report"
     },
     "keywords": [],
     "author": "Leo Qiu",
