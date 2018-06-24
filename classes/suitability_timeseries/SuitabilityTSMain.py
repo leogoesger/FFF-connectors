@@ -12,18 +12,21 @@ class SuitabilityTSMain:
     def __init__(self):
         self.something = None
         self.interpolations = None
+        self.flow_bins = None
 
         # functions
         self.get_interpolation_funcs()
         self.generate_suitability_TS()
 
     def get_interpolation_funcs(self):
-        self.interpolations = Interpolation().interpolations
+        interpolat = Interpolation()
+        self.interpolations = interpolat.interpolations
+        self.flow_bins = interpolat.flow_bins
 
     def generate_suitability_TS(self):
         for file in listdir(self.input_TS_files):
             if(path.splitext(file)[1] == '.csv'):
                 csv_arrays = read_csv_to_arrays('{}/{}'.format
                                                 (self.input_TS_files, file))
-                GaugeSuitability(
-                    csv_arrays, self.interpolations, self.output_TS_folder, path.splitext(file)[0])
+                GaugeSuitability(csv_arrays, self.interpolations, self.flow_bins,
+                                 self.output_TS_folder, path.splitext(file)[0])
