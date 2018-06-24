@@ -21,18 +21,16 @@ Docker provides an easy installation process to get the project running in your 
 
 1.  Install [Docker](https://docs.docker.com/install/) and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-    Note: When install `Git`, do not select `Mintty`. Select the second option(`Windows Console`). If you chose the wrong one, just re-run the installer.
+2)  Open Git Bash(Windows) or Terminal(MacOS or Linux)
 
-2.  Open Git Bash(Windows) or Terminal(MacOS or Linux)
-
-3.  Clone your project in your desired folder by using `cd` to change directory
+3)  Clone your project in your desired folder by using `cd` to change directory
 
     ```
     git clone https://github.com/leogoesger/FFF-connectors
     cd FFF-connectors/
     ```
 
-4.  `cd` into the path of `FFF-connections` directory, then run `shell` script
+4)  `cd` into the path of `FFF-connections` directory, then run `shell` script
 
     ```
     cd path/to/FFF-connectors
