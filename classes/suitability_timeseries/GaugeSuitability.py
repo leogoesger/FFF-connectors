@@ -1,4 +1,5 @@
 from utils.helpers import write_arrays_to_csv, will_it_float
+from calculations.suitability_timeseries.get_func_suitability import get_func_suitability
 
 
 class GaugeSuitability:
@@ -23,27 +24,13 @@ class GaugeSuitability:
             for row_num, row in enumerate(self.time_series):
                 if row_num > 0:
                     self.suitability_TS[key].append(
-                        self.get_func_suitability(key, row))
+                        get_func_suitability(self.interpolation, key, row, self.flow_bins))
 
                     self.combined[key].append(
                         [*row, *self.suitability_TS[key][-1]])
                 else:
                     self.suitability_TS[key].append(row)
                     self.combined[key].append(row)
-
-    def get_func_suitability(self, key, row):
-        new_array = []
-        for perc_func in self.interpolation[key]:
-            ele = perc_func(float(row[1])).tolist()
-            if ele < 0:  # if the value is below 0 from ip func
-                new_array.append(0)
-            # if value is greater than max(flow_bin)
-            elif float(row[1]) > self.flow_bins[key][-1]:
-                new_array.append(
-                    round(perc_func(self.flow_bins[key][-1]).tolist(), 2))
-            else:
-                new_array.append(round(ele, 2))
-        return new_array
 
     def output_to_csv(self):
         for key in self.combined:

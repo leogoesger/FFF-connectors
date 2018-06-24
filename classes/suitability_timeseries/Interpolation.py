@@ -2,6 +2,7 @@ import csv
 from os import path, listdir
 import scipy.interpolate as ip
 
+from calculations.suitability_timeseries.get_suitability_table import get_suitability_table
 from utils.constants import CWHITE, CREDBG, CEND
 from utils.helpers import read_csv_to_arrays, flatten_list
 
@@ -42,22 +43,8 @@ class Interpolation:
 
         # This will create a general outline as following:
         # [{T5: [], T6: []}, {T5: [], T6: []}]
-        arr = []
-        for _ in range(len(csv_arrays[0]) - 1):
-            arr.append({})
-            for key in self.flow_bins:
-                arr[-1][key[:2]] = [None for i in self.flow_bins[key]]
-
-        # Fill in the data
-        for block in csv_arrays:
-            for index, el in enumerate(block):
-                if index > 0:
-                    func_num = index-1
-                    key = block[0][:2]  # 'T6_4' -> 'T6'
-                    velocity = int(block[0][-1]) - 1  # 'T6_4' -> '4'
-                    arr[func_num][key][velocity] = float(el)
-
-        self.suitability_tables = arr
+        self.suitability_tables = get_suitability_table(
+            csv_arrays, self.flow_bins)
 
     def validation(self, suitability_counts):
         flow_bins_counts = len(flatten_list(list(self.flow_bins.values())))
