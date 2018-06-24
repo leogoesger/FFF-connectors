@@ -4,7 +4,12 @@
 
 ## About
 
-This project uses [Python3](https://www.python.org/), [NPM](https://www.npmjs.com/get-npm)(optional) and [Docker](https://docs.docker.com/install/)
+This project uses [Python3](https://www.python.org/), [NPM](https://www.npmjs.com/get-npm)(optional) and [Docker](https://docs.docker.com/install/).
+
+## Calculations
+
+1.  [Hydraulic Suitability Table](docs/hydraulic_performance.md)
+2.  [Hydraulic Suitability Time Series](docs/hydraulic_suitability_TS.md)
 
 ## Setup
 
@@ -14,16 +19,20 @@ Docker is the preferred way of setting up the project. It will resolve most cros
 
 Docker provides an easy installation process to get the project running in your local machine with near zero-configuration.
 
-1.  Install [Docker](https://docs.docker.com/install/)
+1.  Install [Docker](https://docs.docker.com/install/) and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-2.  Clone your project in [Terminal](http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands) or download the entire repo from [Github](https://github.com/leogoesger/FFF-connectors)
+    Note: When install `Git`, do not select `Mintty`. Select the second option(`Windows Console`). If you chose the wrong one, just re-run the installer.
+
+2.  Open Git Bash(Windows) or Terminal(MacOS or Linux)
+
+3.  Clone your project in your desired folder by using `cd` to change directory
 
     ```
     git clone https://github.com/leogoesger/FFF-connectors
     cd FFF-connectors/
     ```
 
-3.  `cd` into the path of `FFF-connections` directory, then run `shell` script
+4.  `cd` into the path of `FFF-connections` directory, then run `shell` script
 
     ```
     cd path/to/FFF-connectors
@@ -131,11 +140,14 @@ Docker provides an easy installation process to get the project running in your 
 
 ## Run Script
 
-1.  With [Docker](https://docs.docker.com/install/)
+1.  With [Docker](https://docs.docker.com/install/). Use Git Bash or Terminal
 
     ```
     ./run.sh
     ```
+
+    NOTE: If it does not recognize the command, you can open the `run.sh` with a text editor. Copy what's inside and paste to your Bash/Terminal.
+    You may also need to prefix the command with the warning.
 
 2.  With Spyder, click on main.py and `run`
 

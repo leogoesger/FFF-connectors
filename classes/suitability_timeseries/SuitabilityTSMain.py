@@ -24,9 +24,12 @@ class SuitabilityTSMain:
         self.flow_bins = interpolat.flow_bins
 
     def generate_suitability_TS(self):
+        print("Processing...")
         for file in listdir(self.input_TS_files):
             if(path.splitext(file)[1] == '.csv'):
+                print(file)
                 csv_arrays = read_csv_to_arrays('{}/{}'.format
                                                 (self.input_TS_files, file))
                 GaugeSuitability(csv_arrays, self.interpolations, self.flow_bins,
                                  self.output_TS_folder, path.splitext(file)[0])
+        print("")

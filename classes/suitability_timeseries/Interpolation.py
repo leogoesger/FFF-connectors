@@ -66,6 +66,7 @@ class Interpolation:
             print(CWHITE + CREDBG +
                   'Suitability table({}) and Flow bins({}) do not match!'
                   .format(flow_bins_counts, suitability_counts) + CEND)
+            print("Check flow bins' input files!")
             print("")
             exit()
 
