@@ -1,4 +1,7 @@
+import os
 import csv
+import errno
+from os import path
 from functools import reduce
 
 
@@ -30,3 +33,29 @@ def write_dict_to_csv(dict, file_name):
 def transpose_csv(file_name):
     a = zip(*csv.reader(open(file_name, "r")))
     csv.writer(open(file_name, "w")).writerows(a)
+
+
+def create_folders(folders):
+    for folder in folders:
+        try:
+            os.makedirs(folder)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
+
+
+def read_csv_to_arrays(file_path, header=False):
+    if(path.splitext(file_path)[1] == '.csv'):
+        with open(file_path, 'r') as csv_file:
+            reader = csv.reader(csv_file, delimiter=',')
+            if header:
+                return [row for index, row in enumerate(reader) if index > 0]
+            else:
+                return [row for row in reader]
+
+
+def write_arrays_to_csv(arrays, file_path):
+    with open(file_path, "w") as output:
+        writer = csv.writer(output, delimiter=',', lineterminator='\n')
+        for val in arrays:
+            writer.writerow(val)

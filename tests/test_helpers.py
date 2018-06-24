@@ -2,7 +2,7 @@ from os import sys, path
 import unittest
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from utils.helpers import flatten_list, will_it_float, count_truthy
+from utils.helpers import flatten_list, will_it_float, count_truthy, read_csv_to_arrays
 
 
 class TestHelperMethods(unittest.TestCase):
@@ -36,6 +36,16 @@ class TestHelperMethods(unittest.TestCase):
         test_case_1 = [True, False, False]
         self.assertEqual(count_truthy(
             test_case_1), 1)
+
+    def test_read_csv_to_arrays_header(self):
+        test_case_1 = 'tests/mock_data/mock_1.csv'
+        test_solu_1 = [['7', '4000'], ['8', '5000']]
+        self.assertEqual(read_csv_to_arrays(test_case_1), test_solu_1)
+
+    def test_read_csv_to_arrays_no_header(self):
+        test_case_1 = 'tests/mock_data/mock_1.csv'
+        test_solu_1 = [['8', '5000']]
+        self.assertEqual(read_csv_to_arrays(test_case_1, True), test_solu_1)
 
 
 if __name__ == '__main__':

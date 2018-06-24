@@ -14,9 +14,6 @@ class TestGetFunctionalRasterMethods(unittest.TestCase):
         solu_case_1 = {"raster_1": [[False, True, False, False], [True, False, False, False]],
                        "raster_2": [[True, False, False, False], [True, False, True, False]]}
 
-        print("++++++++++++++++++++")
-        print(get_functional_rasters(test_case_1, test_case_1_num))
-
         self.assertEqual(get_functional_rasters(
             test_case_1, test_case_1_num), solu_case_1)
 

@@ -1,3 +1,14 @@
+from classes.Introduction import Introduction
 from classes.hydraulic_performance.PerformanceMain import PerformanceMain
+from classes.suitability_timeseries.SuitabilityTSMain import SuitabilityTSMain
 
-PerformanceMain()
+selected_script = Introduction().script
+
+# define all scripts into a dictionary
+options = {
+    'hydraulic_performance': PerformanceMain,
+    'hydraulic_suitability_TS': SuitabilityTSMain,
+}
+
+# run select scripts
+options[selected_script]()

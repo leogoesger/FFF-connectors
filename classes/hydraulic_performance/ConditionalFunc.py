@@ -46,7 +46,8 @@ class ConditionalFunc:
 
     def reclassify_rasters(self):
         # inspect all raw files and reclassify ones match
-        for file in listdir("raw"):
+        folder_name = "files_input/hydraulic_performance"
+        for file in listdir(folder_name):
 
             # remove all files not end with tif
             if not (path.splitext(file)[1] == '.tif'):
@@ -58,7 +59,7 @@ class ConditionalFunc:
             if(file_info[2] == self.hydrologic_variable and
                     file_info[3] == self.spatial_boundary):
 
-                with rasterio.open("raw/{}".format(file)) as src:
+                with rasterio.open("{}/{}".format(folder_name, file)) as src:
                     # rasterio open the file and save each raster as a key/value pair
                     self.binned_rasters[path.splitext(file)[0]] = reclassify_raster(
                         src.read()[0], self.binning)
