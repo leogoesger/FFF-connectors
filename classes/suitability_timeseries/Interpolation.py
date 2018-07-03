@@ -61,8 +61,8 @@ class Interpolation:
         for key in self.suitability_tables[0]:
             self.interpolations[key] = []
             for perf_func in self.suitability_tables:
-                self.interpolations[key].append(ip.UnivariateSpline(
-                    self.flow_bins[key], perf_func[key], k=1.5, s=1.2))
+                self.interpolations[key].append(ip.interp1d(
+                    self.flow_bins[key], perf_func[key], kind="cubic"))
 
 
 def extract_data_from_flow_bins(csv_arrays):

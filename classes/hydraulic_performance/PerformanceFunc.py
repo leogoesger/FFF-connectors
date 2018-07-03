@@ -89,4 +89,4 @@ class PerformanceFunc:
     def create_performance_count_table(self):
         for key in self.combined_rasters:
             self.performance_counts[key] = round(count_truthy(
-                self.combined_rasters[key]) / len(self.combined_rasters[key]), 2)
+                self.combined_rasters[key]) / len(self.combined_rasters[key]), 6)

@@ -22,6 +22,7 @@ class GaugeSuitability:
             self.suitability_TS[key] = []
             self.combined[key] = []
             for row_num, row in enumerate(self.time_series):
+                # row is an array with date and flow value
                 if row_num > 0:
                     self.suitability_TS[key].append(
                         get_func_suitability(self.interpolation, key, row, self.flow_bins))
