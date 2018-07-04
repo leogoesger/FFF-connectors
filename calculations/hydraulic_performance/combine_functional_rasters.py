@@ -31,7 +31,7 @@ def combine_functional_rasters(raster_collection, spatial_boundary, conditional_
 
 
 def zip_and_compare(list_a, list_b, relation):
-    if (relation == 'And'):
+    if (relation == 'All'):
         return [a and b for a, b in zip(list_a, list_b)]
     else:
         return [a or b for a, b in zip(list_a, list_b)]
