@@ -17,7 +17,7 @@ class TestGetFunctionalRasterMethods(unittest.TestCase):
                     'T6_6_X_': [False, False, True, False, True, False]}
 
         self.assertEqual(combine_functional_rasters(
-            raster_collection, spatial_boundary, "And"), expected)
+            raster_collection, spatial_boundary, "All"), expected)
 
     def test_zip_and_compare_general_case(self):
         list_a = [True, False, True]
@@ -25,7 +25,7 @@ class TestGetFunctionalRasterMethods(unittest.TestCase):
         sol = [True, False, False]
 
         self.assertEqual(zip_and_compare(
-            list_a, list_b, "And"), sol)
+            list_a, list_b, "All"), sol)
 
 
 if __name__ == '__main__':
