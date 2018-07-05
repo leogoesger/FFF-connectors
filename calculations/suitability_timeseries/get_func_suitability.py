@@ -16,5 +16,4 @@ def get_func_suitability(interpolation, key, row, flow_bins):
                 round(perc_func(flow_bins[key][-1]).tolist(), 6))
         else:
             new_array.append(round(perc_func(row[1]).tolist(), 6))
-
     return new_array

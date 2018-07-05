@@ -26,7 +26,6 @@ class GaugeSuitability:
                 if row_num > 0:
                     self.suitability_TS[key].append(
                         get_func_suitability(self.interpolation, key, row, self.flow_bins))
-
                     self.combined[key].append(
                         [*row, *self.suitability_TS[key][-1]])
                 else:
