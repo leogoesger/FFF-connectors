@@ -14,7 +14,8 @@ class Introduction:
             inquirer.List('script',
                           message="Which script to run?",
                           choices=['hydraulic performance',
-                                   'hydraulic suitability TS', ],
+                                   'hydraulic suitability TS',
+                                   'ffc result metrics'],
                           ),
         ]
         answers = inquirer.prompt(questions)
@@ -25,7 +26,8 @@ class Introduction:
 
         if(self.script == 'hydraulic_suitability_TS'):
             input_folder.extend((input_folder[0] + '/flow_bins',
-                                 input_folder[0] + '/suitability_table'))
+                                 input_folder[0] + '/suitability_table'),
+                                input_folder[0] + '/ffc_result_metrics')
 
         output_folder = 'files_output/{}'.format(self.script)
         create_folders([*input_folder, output_folder])
