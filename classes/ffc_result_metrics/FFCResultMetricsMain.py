@@ -38,4 +38,5 @@ class FFCResultMetricsMain:
         for metric in metric_names:
             with open("{}/{}.csv".format(self.output_path, metric), "w") as f:
                 writer = csv.writer(f)
-                writer.writerows(self.result_dict[metric])
+                writer.writerows(
+                    [["gauge", "class", *[self.start_year + i for i in range(self.end_year + 1 - self.start_year)]], *self.result_dict[metric]])
