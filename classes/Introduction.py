@@ -25,12 +25,13 @@ class Introduction:
     def input_output_folder_structure(self):
         input_folder = ['files_input/{}'.format(self.script)]
 
+        # For input folder needs multiple sub-folders
         if(self.script == 'hydraulic_suitability_TS'):
-            input_folder.extend(input_folder[0] + '/flow_bins',
-                                input_folder[0] + '/suitability_table')
+            input_folder.extend([input_folder[0] + '/flow_bins',
+                                 input_folder[0] + '/suitability_table'])
         if(self.script == 'hydraulic_suitability_scenario'):
-            input_folder.extend(input_folder[0] + '/scenario',
-                                input_folder[0] + '/time_series')
+            input_folder.extend([input_folder[0] + '/scenario',
+                                 input_folder[0] + '/time_series'])
 
         output_folder = 'files_output/{}'.format(self.script)
         create_folders([*input_folder, output_folder])

@@ -51,6 +51,9 @@ class TimeSeriesConversion:
         self.end_year = None
         self.final_matrix = None
 
+        self.get_empty_matrix()
+        self.populate()
+
     def get_year_limits(self):
         """Assign year limits which accounts for leap year at either end
         """
@@ -95,8 +98,6 @@ class TimeSeriesConversion:
         # 01/01 is day 1, so '-1' will give the index of array
         row_index = date_to_offset_julian(date, self.offset_date) - 1
 
-        # import pdb
-        # pdb.set_trace()
         return row_index, column_index
 
     def populate(self):
@@ -105,4 +106,4 @@ class TimeSeriesConversion:
         for index, d in enumerate(self.date_array):
             r_i, c_i = self.get_position_index(d)
 
-            self.final_matrix[r_i][c_i] = self.date_array[index]
+            self.final_matrix[r_i][c_i] = self.data_array[index]
