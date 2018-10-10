@@ -1,4 +1,4 @@
-import inquirer
+from inquirer import prompt, List
 from utils.helpers import create_folders
 
 
@@ -11,15 +11,15 @@ class Introduction:
     def get_script(self):
         print('')
         questions = [
-            inquirer.List('script',
-                          message="Which script to run?",
-                          choices=['hydraulic performance',
-                                   'hydraulic suitability TS',
-                                   'ffc result metrics',
-                                   'hydraulic suitability scenario'],
-                          ),
+            List('script',
+                 message="Which script to run?",
+                 choices=['hydraulic performance',
+                          'hydraulic suitability TS',
+                          'ffc result metrics',
+                          'hydraulic suitability scenario'],
+                 ),
         ]
-        answers = inquirer.prompt(questions)
+        answers = prompt(questions)
         self.script = answers['script'].replace(" ", "_")
 
     def input_output_folder_structure(self):

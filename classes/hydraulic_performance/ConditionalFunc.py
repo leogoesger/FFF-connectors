@@ -1,5 +1,5 @@
 from os import sys, listdir, path
-import inquirer
+from inquirer import List, Text, prompt
 import rasterio
 
 from utils.helpers import will_it_float
@@ -23,21 +23,21 @@ class ConditionalFunc:
         # inquirer questions for hydrologic_variable, binning, and functional_bin_number
         print('')
         questions = [
-            inquirer.List('hydrologic_variable',
-                          message="Which hydrologic variable?",
-                          choices=['d: depth', 'v: velocity',
-                                   't: shear stress'],
-                          ),
-            inquirer.Text('binning',
-                          message="Define the binning. Example: 1.2, 2.1 ",
-                          validate=lambda _, d: d is not ''),
+            List('hydrologic_variable',
+                 message="Which hydrologic variable?",
+                 choices=['d: depth', 'v: velocity',
+                          't: shear stress'],
+                 ),
+            Text('binning',
+                 message="Define the binning. Example: 1.2, 2.1 ",
+                 validate=lambda _, d: d is not ''),
 
-            inquirer.Text('functional_bin_number',
-                          message="Input functional bin number. Example: 0 or 1",
-                          validate=lambda _, d: will_it_float(d)),
+            Text('functional_bin_number',
+                 message="Input functional bin number. Example: 0 or 1",
+                 validate=lambda _, d: will_it_float(d)),
         ]
 
-        answers = inquirer.prompt(questions)
+        answers = prompt(questions)
         # parse answers to desired values
         self.hydrologic_variable = answers['hydrologic_variable'][0]
         self.binning = [float(x.strip())
