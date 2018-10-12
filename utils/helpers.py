@@ -31,6 +31,12 @@ def write_dict_to_csv(dict, file_name):
 
 
 def transpose_csv(file_name):
+    """[Transpose csv in place]
+
+    Arguments:
+        file_name {[string]} -- [path of the file]
+    """
+
     a = zip(*csv.reader(open(file_name, "r")))
     csv.writer(open(file_name, "w")).writerows(a)
 

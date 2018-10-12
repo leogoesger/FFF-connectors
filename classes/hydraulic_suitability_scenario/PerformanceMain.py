@@ -1,6 +1,6 @@
 from classes.hydraulic_suitability_scenario.optimal_performance.OptimalMain import OptimalMain
 from classes.hydraulic_suitability_scenario.senario.Senario import Senario
-from utils.helpers import write_arrays_to_csv
+from utils.helpers import write_arrays_to_csv, transpose_csv
 
 
 class PerformanceMain:
@@ -13,13 +13,13 @@ class PerformanceMain:
             file_name: string,
             ts: [[]],
             scenario_csv: [[]],
-            scenarios: {func_0: {date_ary: [], data_ary: []}},
+            scenarios: {func_0: {data_ary: [], magnitude: [], binnings?: []}},
             optimal: {func_0: {
               data_ary: [], 
               date_ary: [], 
               matrix: [[]], 
               percentiles: [{min, max, ...}]}, 
-              binning: [{min, max, ...}]}
+              binnings?: [{min, max, ...}]}
           }
 
           user_inputs: {
@@ -36,6 +36,7 @@ class PerformanceMain:
         self.user_inputs = _op.user_inputs
 
         self.get_senario_binnings()
+        self.save_result()
 
     def get_senario_binnings(self):
         for dataset in self.op_datasets:
@@ -43,4 +44,37 @@ class PerformanceMain:
                 dataset["scenario_csv"], self.user_inputs).scenarios
 
     def save_result(self):
-        file_path = ""
+        folder_path = "files_output/hydraulic_suitability_scenario/"
+        for dataset in self.op_datasets:
+            for key, value in dataset["optimal"].items():
+
+                # Saving optimal whole matrix
+                optimal_matrix_file_path = folder_path + \
+                    "{}_{}_opt_matrix.csv".format(dataset["file_name"], key)
+                write_arrays_to_csv(value["matrix"], optimal_matrix_file_path)
+
+                # Saving optimal percentile into 7 columns
+                optimal_percentile_file_path = folder_path + \
+                    "{}_{}_opt_percentile.csv".format(
+                        dataset["file_name"], key)
+                percentiles = [[perc["min"], perc["10th"], perc["25th"], perc["50th"], perc["75th"],
+                                perc["90th"], perc["max"]] for perc in value["percentiles"]]
+                write_arrays_to_csv(percentiles, optimal_percentile_file_path)
+
+                # Saving optimal binnings into 7 columns
+                if "binnings" in value:
+                    optimal_binning_file_path = folder_path + \
+                        "{}_{}_opt_binnings.csv".format(
+                            dataset["file_name"], key)
+                    binnings = [[bins["min"], bins["10th"], bins["25th"], bins["50th"], bins["75th"],
+                                 bins["90th"], bins["max"]] for bins in value["binnings"]]
+                    write_arrays_to_csv(binnings, optimal_binning_file_path)
+
+            for key, value in dataset["scenarios"].items():
+                scenario_file_path = folder_path + \
+                    "{}_{}_senario.csv".format(dataset["file_name"], key)
+                senario_data = [value["data_ary"], value["magnitude"]]
+                if "binnings" in value:
+                    senario_data.append(value["binnings"])
+                write_arrays_to_csv(senario_data, scenario_file_path)
+                transpose_csv(scenario_file_path)

@@ -15,7 +15,7 @@ class Senario:
         self.scenarios = {}
         for i in range(self.num_of_funcs):
             self.scenarios["func_" +
-                           str(i)] = {"date_array": [], "magnitude": []}
+                           str(i)] = {"data_ary": [], "magnitude": []}
 
         self.get_scenario_data()
         self.get_binnings()
@@ -23,9 +23,10 @@ class Senario:
     def get_scenario_data(self):
         for row in self.dataset:
             for i in range(self.num_of_funcs):
-                self.scenarios["func_" + str(i)]["date_array"].append(row[0])
+
+                self.scenarios["func_" + str(i)]["data_ary"].append(row[0])
                 self.scenarios["func_" +
-                               str(i)]["magnitude"].append(row[i + 1])
+                               str(i)]["magnitude"].append(row[i + 2])
 
     def get_binnings(self):
         for key, value in self.user_input.items():

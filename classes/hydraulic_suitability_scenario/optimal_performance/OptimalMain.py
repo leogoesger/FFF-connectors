@@ -36,7 +36,7 @@ class OptimalMain:
             scenario_matrix = read_csv_to_arrays(scenario_path, True)
 
             self.input_datasets.append(
-                {"file_name": file_name, "ts": ts_matrix, "scenario_csv": scenario_matrix})
+                {"file_name": file_name.split(".")[0], "ts": ts_matrix, "scenario_csv": scenario_matrix})
 
     def calculate_percentille(self):
         for dataset in self.input_datasets:
@@ -53,4 +53,4 @@ class OptimalMain:
             optimalBins = OptimalBinning(self.user_inputs, dataset).binnings
 
             for func in optimalBins:
-                dataset["optimal"][func]["binning"] = optimalBins[func]
+                dataset["optimal"][func]["binnings"] = optimalBins[func]

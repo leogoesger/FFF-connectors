@@ -6,7 +6,7 @@ class OptimalPerformance:
 
     def __init__(self, matrix):
         self.matrix = matrix
-        self.number_of_funcs = len(matrix[0]) - 2
+        self.number_of_funcs = len(matrix[10]) - 2
         self.result = {}
 
         for i in range(self.number_of_funcs):
@@ -22,7 +22,7 @@ class OptimalPerformance:
             for i in range(self.number_of_funcs):
                 self.result["func_" + str(i)]["date_ary"].append(row[0])
                 self.result["func_" +
-                            str(i)]["data_ary"].append(float(row[i + 1]))
+                            str(i)]["data_ary"].append(float(row[i + 2]))
 
     def create_matrix(self):
         for i in range(self.number_of_funcs):

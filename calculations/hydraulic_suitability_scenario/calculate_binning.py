@@ -2,7 +2,7 @@ def calculate_binning(num, bins):
     belongs_to = None
     for index, b in enumerate(bins):
         if num <= b:
-            belongs_to = index
+            return index
 
     if not belongs_to:
         belongs_to = len(bins)
@@ -13,5 +13,5 @@ def calculate_binning(num, bins):
 def get_binings_array(data_array, bins):
     binnings = []
     for num in data_array:
-        binnings.append(calculate_binning(num, bins))
+        binnings.append(calculate_binning(float(num), bins))
     return binnings
