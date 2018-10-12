@@ -1,5 +1,7 @@
 import os
 from utils.helpers import read_csv_to_arrays
+from utils.constants import CEND, CRED
+
 from classes.hydraulic_suitability_scenario.optimal_performance.OptimalPerformance import OptimalPerformance
 from classes.hydraulic_suitability_scenario.optimal_performance.UserInput import UserInput
 from classes.hydraulic_suitability_scenario.optimal_performance.OptimalBinning import OptimalBinning
@@ -13,6 +15,12 @@ class OptimalMain:
         self.input_datasets = []
         self.number_of_funcs = None
         self.user_inputs = None  # for each func
+        self.files = os.listdir(self.input_TS_files)
+
+        if not len(self.files):
+            print(
+                CRED + "Looks like you have not uploaded any files into input folders..."+CEND)
+            return
 
         self.read_scenario_and_time_series()
         self.calculate_percentille()
@@ -27,7 +35,8 @@ class OptimalMain:
         time series file format xx_xx_x.csv
         """
 
-        for file_name in os.listdir(self.input_TS_files):
+        for file_name in self.files:
+
             ts_path = os.path.join(self.input_TS_files, file_name)
             scenario_path = os.path.join(
                 self.input_scenario_files, file_name.split(".")[0]+"_scenario.csv")

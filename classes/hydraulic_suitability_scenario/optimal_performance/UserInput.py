@@ -71,7 +71,7 @@ class UserInput:
 
             cate_question = [
                 Text('binnings',
-                     message="Define the binnings. Example: 1.2, 2.1 ",
+                     message="Define the binnings. Example: 0.3, 0.5 ",
                      validate=lambda _, d: d is not ''),
             ]
             if answers['type'] == 'categorical':
