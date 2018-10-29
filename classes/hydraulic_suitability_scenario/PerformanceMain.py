@@ -34,23 +34,29 @@ class PerformanceMain:
               bioperiod_end_date: string, 
               binnings?: []}
             }
+
+          reliability_time: [d]
+          d: {
+              file_name: string
+              timing_status: {
+                func_0: [Boolean]
+             }
+           }
         """
 
         _op = OptimalMain()
         self.op_datasets = _op.input_datasets
         self.user_inputs = _op.user_inputs
+        self.reliability_time = ReliabilityTime(
+            self.op_datasets, self.user_inputs).reliability_time
 
         self.get_senario_binnings()
         self.save_result()
-        self.get_reliability_timing()
 
     def get_senario_binnings(self):
         for dataset in self.op_datasets:
             dataset["scenarios"] = Senario(
                 dataset["scenario_csv"], self.user_inputs).scenarios
-
-    def get_reliability_timing(self):
-        ReliabilityTime(self.op_datasets, self.user_inputs)
 
     def save_result(self):
         folder_path = "files_output/hydraulic_suitability_scenario/"

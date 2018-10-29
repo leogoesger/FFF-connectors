@@ -6,7 +6,13 @@ from utils.helpers import write_arrays_to_csv, transpose_csv
 class ReliabilityTime:
     """Calculate reliability time for multiple datasets
 
-       limits: {'func_0': {'lower_limit': 'min', 'upper_limit': '10th'}, 'func_1': {'lower_limit': 'min', 'upper_limit': '10th'}}
+       limits: {
+           func_0: {
+               lower_limit: string
+               upper_limit: string
+           }
+       }
+
        reliability_time = [realibility]
        realibility = {
            file_name: string
