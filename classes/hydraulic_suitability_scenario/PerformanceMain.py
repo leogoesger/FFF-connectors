@@ -1,6 +1,7 @@
 from classes.hydraulic_suitability_scenario.optimal_performance.OptimalMain import OptimalMain
 from classes.hydraulic_suitability_scenario.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
+from classes.hydraulic_suitability_scenario.reliability.ReliabilityTime import ReliabilityTime
 
 
 class PerformanceMain:
@@ -13,14 +14,18 @@ class PerformanceMain:
             file_name: string,
             ts: [[]],
             scenario_csv: [[]],
-            scenarios: {func_0: {data_ary: [], magnitude: [], binnings?: []}},
+            scenarios: {func_0: {
+                data_ary: [], 
+                magnitude: [], 
+                binnings?: []}
+            },
             optimal: {func_0: {
               data_ary: [], 
               date_ary: [], 
               matrix: [[]], 
-              percentiles: [{min, max, ...}]}, 
-              binnings?: [{min, max, ...}]}
-          }
+              percentiles: [{min, 10th, 25th, 50th, 75th, 90th, max}]}, 
+              binnings?: [{min, 10th, 25th, 50th, 75th, 90th, max}]}
+            }
 
           user_inputs: {
             fun_0: {
@@ -37,11 +42,15 @@ class PerformanceMain:
 
         self.get_senario_binnings()
         self.save_result()
+        self.get_reliability_timing()
 
     def get_senario_binnings(self):
         for dataset in self.op_datasets:
             dataset["scenarios"] = Senario(
                 dataset["scenario_csv"], self.user_inputs).scenarios
+
+    def get_reliability_timing(self):
+        ReliabilityTime(self.op_datasets, self.user_inputs)
 
     def save_result(self):
         folder_path = "files_output/hydraulic_suitability_scenario/"

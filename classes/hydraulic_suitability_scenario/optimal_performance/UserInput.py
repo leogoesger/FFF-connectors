@@ -33,8 +33,10 @@ class UserInput:
                 bins = self.user_inputs["func_" + str(i)]["binnings"]
                 for index, b in enumerate(bins):
                     if index < len(bins) - 1:
-                        print(" Bin-{}: {} to {}".format(index +
-                                                         1, b, bins[index + 1]))
+                        print(
+                            " Bin-{}: {} to {}".format(index, b, bins[index + 1]))
+                print(
+                    " Bin-{}: {} to infinity".format(len(bins) - 1, bins[-1], ))
 
         question = [
             List('is_correct',
