@@ -2,6 +2,7 @@ from classes.hydraulic_suitability_scenario.optimal_performance.OptimalMain impo
 from classes.hydraulic_suitability_scenario.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
 from classes.hydraulic_suitability_scenario.reliability.ReliabilityTime import ReliabilityTime
+from classes.hydraulic_suitability_scenario.reliability.ReliabilityVolume import ReliabilityVolume
 
 
 class PerformanceMain:
@@ -17,7 +18,7 @@ class PerformanceMain:
             scenarios: {func_0: {
                 data_ary: [], 
                 magnitude: [], 
-                binnings?: []}
+                binnings?: []}, 
             },
             optimal: {func_0: {
               data_ary: [], 
@@ -35,10 +36,18 @@ class PerformanceMain:
               binnings?: []}
             }
 
-          reliability_time: [d]
-          d: {
+          reliability_time: [time]
+          time: {
               file_name: string
               timing_status: {
+                func_0: [Boolean]
+             }
+           }
+
+          reliability_value: [volume]
+          volume: {
+              file_name: string
+              volume: {
                 func_0: [Boolean]
              }
            }
@@ -47,10 +56,13 @@ class PerformanceMain:
         _op = OptimalMain()
         self.op_datasets = _op.input_datasets
         self.user_inputs = _op.user_inputs
+        self.get_senario_binnings()
+
         self.reliability_time = ReliabilityTime(
             self.op_datasets, self.user_inputs).reliability_time
+        self.reliability_value = ReliabilityVolume(
+            self.op_datasets, self.user_inputs).reliability_volumne
 
-        self.get_senario_binnings()
         self.save_result()
 
     def get_senario_binnings(self):
