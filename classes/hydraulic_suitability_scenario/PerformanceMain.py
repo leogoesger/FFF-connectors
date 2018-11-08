@@ -3,6 +3,7 @@ from classes.hydraulic_suitability_scenario.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
 from classes.hydraulic_suitability_scenario.reliability.ReliabilityTime import ReliabilityTime
 from classes.hydraulic_suitability_scenario.reliability.ReliabilityVolume import ReliabilityVolume
+from classes.hydraulic_suitability_scenario.vulnerability.Vulnerability import Vulnerability
 
 
 class PerformanceMain:
@@ -58,12 +59,25 @@ class PerformanceMain:
         self.user_inputs = _op.user_inputs
         self.get_senario_binnings()
 
-        self.reliability_time = ReliabilityTime(
-            self.op_datasets, self.user_inputs).reliability_time
+        self.reliabilitytime = ReliabilityTime(
+            self.op_datasets, self.user_inputs)
+        self.reliability_time = self.reliabilitytime.reliability_time
+
         self.reliability_value = ReliabilityVolume(
             self.op_datasets, self.user_inputs).reliability_volumne
 
         self.save_result()
+
+        self.vulnerability = Vulnerability(
+            self.reliabilitytime.limits, self.user_inputs).vulnerability
+
+        self.save_vulnerability()
+
+    def save_vulnerability(self):
+        folder_path = "files_output/hydraulic_suitability_scenario/"
+        # Saving optimal whole matrix
+        vulnerability_file_path = folder_path + "vulnerability.csv"
+        write_arrays_to_csv(self.vulnerability, vulnerability_file_path)
 
     def get_senario_binnings(self):
         for dataset in self.op_datasets:

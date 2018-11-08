@@ -6,3 +6,4 @@ node_modules
 files_input
 files_output
 .coverage
+*.csv*
