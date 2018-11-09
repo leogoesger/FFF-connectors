@@ -30,6 +30,15 @@ def write_dict_to_csv(dict, file_name):
     transpose_csv(file_name)
 
 
+def write_single_dict_to_csv(dict, file_name):
+    keys = dict.keys()
+    with open(file_name, 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerow(dict)
+    # transpose_csv(file_name)
+
+
 def transpose_csv(file_name):
     """[Transpose csv in place]
 
