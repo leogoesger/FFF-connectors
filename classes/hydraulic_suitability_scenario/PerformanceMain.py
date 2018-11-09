@@ -3,6 +3,7 @@ from classes.hydraulic_suitability_scenario.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
 from classes.hydraulic_suitability_scenario.reliability.ReliabilityTime import ReliabilityTime
 from classes.hydraulic_suitability_scenario.reliability.ReliabilityVolume import ReliabilityVolume
+from classes.hydraulic_suitability_scenario.vulnerability.Vulnerability import Vulnerability
 
 
 class PerformanceMain:
@@ -51,6 +52,16 @@ class PerformanceMain:
                 func_0: [Boolean]
              }
            }
+           vulnerability: [value] 
+           value: {
+               file_name: string
+               value: {
+                   func0: float
+                   func1: float
+               }
+
+
+           }
         """
 
         _op = OptimalMain()
@@ -58,10 +69,15 @@ class PerformanceMain:
         self.user_inputs = _op.user_inputs
         self.get_senario_binnings()
 
-        self.reliability_time = ReliabilityTime(
-            self.op_datasets, self.user_inputs).reliability_time
+        self.reliabilitytime = ReliabilityTime(
+            self.op_datasets, self.user_inputs)
+        self.reliability_time = self.reliabilitytime.reliability_time
+
         self.reliability_value = ReliabilityVolume(
             self.op_datasets, self.user_inputs).reliability_volumne
+
+        self.vulnerability = Vulnerability(
+            self.reliabilitytime.limits, self.user_inputs, self.op_datasets).vulnerability
 
         self.save_result()
 
@@ -96,6 +112,15 @@ class PerformanceMain:
                     binnings = [[bins["min"], bins["10th"], bins["25th"], bins["50th"], bins["75th"],
                                  bins["90th"], bins["max"]] for bins in value["binnings"]]
                     write_arrays_to_csv(binnings, optimal_binning_file_path)
+
+            for key, value in dataset["scenarios"].items():
+                scenario_file_path = folder_path + \
+                    "{}_{}_senario.csv".format(dataset["file_name"], key)
+                senario_data = [value["data_ary"], value["magnitude"]]
+                if "binnings" in value:
+                    senario_data.append(value["binnings"])
+                write_arrays_to_csv(senario_data, scenario_file_path)
+                transpose_csv(scenario_file_path)
 
             for key, value in dataset["scenarios"].items():
                 scenario_file_path = folder_path + \

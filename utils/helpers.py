@@ -22,12 +22,29 @@ def count_truthy(list):
 
 
 def write_dict_to_csv(dict, file_name):
+    """ Writes list of dict into csv files
+        [{a:1, b:1 ...}, {a:2, b:2 ...}]
+
+    """
     keys = dict[0].keys()
     with open(file_name, 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(dict)
     transpose_csv(file_name)
+
+
+def write_single_dict_to_csv(dict, file_name):
+    """ Writes dict into csv files
+        {a:1, b:1, c:1 ...}
+
+    """
+
+    keys = dict.keys()
+    with open(file_name, 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerow(dict)
 
 
 def transpose_csv(file_name):
