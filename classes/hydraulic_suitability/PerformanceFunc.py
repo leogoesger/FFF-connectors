@@ -1,9 +1,9 @@
 import inquirer
 
-from classes.hydraulic_performance.ConditionalFunc import ConditionalFunc
+from classes.hydraulic_suitability.ConditionalFunc import ConditionalFunc
 from utils.constants import CVIOLET, CEND
 from utils.helpers import count_truthy
-from calculations.hydraulic_performance.combine_functional_rasters import combine_functional_rasters
+from calculations.hydraulic_suitability.combine_functional_rasters import combine_functional_rasters
 
 
 class PerformanceFunc:

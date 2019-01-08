@@ -2,7 +2,7 @@ from os import sys, path
 import unittest
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from calculations.hydraulic_performance.combine_functional_rasters import combine_functional_rasters, zip_and_compare
+from calculations.hydraulic_suitability.combine_functional_rasters import combine_functional_rasters, zip_and_compare
 
 
 class TestGetFunctionalRasterMethods(unittest.TestCase):

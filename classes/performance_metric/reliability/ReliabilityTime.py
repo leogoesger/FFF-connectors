@@ -75,7 +75,7 @@ class ReliabilityTime:
                     scen_val) <= opt_array[index][upper_key] else False for index, scen_val in enumerate(scen_array)]
 
     def save_csv(self):
-        folder_path = "files_output/hydraulic_suitability_scenario/"
+        folder_path = "files_output/performance_metrics/"
 
         for data in self.reliability_time:
             file_path = folder_path + \

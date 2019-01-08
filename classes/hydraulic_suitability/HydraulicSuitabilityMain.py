@@ -2,10 +2,10 @@ import inquirer
 
 from utils.constants import CVIOLET, CEND
 from utils.helpers import write_dict_to_csv
-from classes.hydraulic_performance.PerformanceFunc import PerformanceFunc
+from classes.hydraulic_suitability.PerformanceFunc import PerformanceFunc
 
 
-class PerformanceMain:
+class HydraulicSuitabilityMain:
     def __init__(self):
         self.add_performance_function_status = True
         self.performance_count_collection = []
@@ -44,7 +44,7 @@ class PerformanceMain:
         count_collection = [transform_key(count_dict)
                             for count_dict in self.performance_count_collection]
         write_dict_to_csv(count_collection,
-                          'files_output/hydraulic_performance/performance_table.csv')
+                          'files_output/hydraulic_suitability/performance_table.csv')
 
 
 def transform_key(dict):

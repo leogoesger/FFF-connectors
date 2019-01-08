@@ -1,5 +1,5 @@
 from utils.time_series_conversion import TimeSeriesConversion
-from calculations.hydraulic_suitability_scenario.calculate_percentile import calculate_percentile
+from calculations.performance_metrics.calculate_percentile import calculate_percentile
 
 
 class OptimalPerformance:

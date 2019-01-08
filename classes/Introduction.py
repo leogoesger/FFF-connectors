@@ -13,10 +13,10 @@ class Introduction:
         questions = [
             List('script',
                  message="Which script to run?",
-                 choices=['hydraulic performance',
+                 choices=['hydraulic suitability',
                           'hydraulic suitability TS',
                           'ffc result metrics',
-                          'hydraulic suitability scenario'],
+                          'performance metrics'],
                  ),
         ]
         answers = prompt(questions)
@@ -29,7 +29,7 @@ class Introduction:
         if(self.script == 'hydraulic_suitability_TS'):
             input_folder.extend([input_folder[0] + '/flow_bins',
                                  input_folder[0] + '/suitability_table'])
-        if(self.script == 'hydraulic_suitability_scenario'):
+        if(self.script == 'performance_metrics'):
             input_folder.extend([input_folder[0] + '/scenario',
                                  input_folder[0] + '/time_series'])
 

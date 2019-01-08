@@ -1,4 +1,4 @@
-from calculations.hydraulic_suitability_scenario.calculate_binning import get_binings_array
+from calculations.performance_metrics.calculate_binning import get_binings_array
 
 
 class Senario:

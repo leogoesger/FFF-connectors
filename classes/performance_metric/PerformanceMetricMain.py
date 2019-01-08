@@ -1,12 +1,12 @@
-from classes.hydraulic_suitability_scenario.optimal_performance.OptimalMain import OptimalMain
-from classes.hydraulic_suitability_scenario.senario.Senario import Senario
+from classes.performance_metric.optimal_performance.OptimalMain import OptimalMain
+from classes.performance_metric.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
-from classes.hydraulic_suitability_scenario.reliability.ReliabilityTime import ReliabilityTime
-from classes.hydraulic_suitability_scenario.reliability.ReliabilityVolume import ReliabilityVolume
-from classes.hydraulic_suitability_scenario.vulnerability.Vulnerability import Vulnerability
+from classes.performance_metric.reliability.ReliabilityTime import ReliabilityTime
+from classes.performance_metric.reliability.ReliabilityVolume import ReliabilityVolume
+from classes.performance_metric.vulnerability.Vulnerability import Vulnerability
 
 
-class PerformanceMain:
+class PerformanceMetricMain:
     def __init__(self):
         """ 
           Main entry function for performance. 
@@ -87,7 +87,7 @@ class PerformanceMain:
                 dataset["scenario_csv"], self.user_inputs).scenarios
 
     def save_result(self):
-        folder_path = "files_output/hydraulic_suitability_scenario/"
+        folder_path = "files_output/performance_metrics/"
         for dataset in self.op_datasets:
             for key, value in dataset["optimal"].items():
 

@@ -3,8 +3,8 @@ from inquirer import List, Text, prompt
 import rasterio
 
 from utils.helpers import will_it_float
-from calculations.hydraulic_performance.reclassify_raster import reclassify_raster
-from calculations.hydraulic_performance.get_functional_rasters import get_functional_rasters
+from calculations.hydraulic_suitability.reclassify_raster import reclassify_raster
+from calculations.hydraulic_suitability.get_functional_rasters import get_functional_rasters
 
 
 class ConditionalFunc:
@@ -46,7 +46,7 @@ class ConditionalFunc:
 
     def reclassify_rasters(self):
         # inspect all raw files and reclassify ones match
-        folder_name = "files_input/hydraulic_performance"
+        folder_name = "files_input/hydraulic_suitability"
         for file in listdir(folder_name):
 
             # remove all files not end with tif

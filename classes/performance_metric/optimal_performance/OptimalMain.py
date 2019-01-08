@@ -2,14 +2,14 @@ import os
 from utils.helpers import read_csv_to_arrays
 from utils.constants import CEND, CRED
 
-from classes.hydraulic_suitability_scenario.optimal_performance.OptimalPerformance import OptimalPerformance
-from classes.hydraulic_suitability_scenario.optimal_performance.UserInput import UserInput
-from classes.hydraulic_suitability_scenario.optimal_performance.OptimalBinning import OptimalBinning
+from classes.performance_metric.optimal_performance.OptimalPerformance import OptimalPerformance
+from classes.performance_metric.optimal_performance.UserInput import UserInput
+from classes.performance_metric.optimal_performance.OptimalBinning import OptimalBinning
 
 
 class OptimalMain:
-    input_scenario_files = 'files_input/hydraulic_suitability_scenario/scenario'
-    input_TS_files = 'files_input/hydraulic_suitability_scenario/time_series'
+    input_scenario_files = 'files_input/performance_metrics/scenario'
+    input_TS_files = 'files_input/performance_metrics/time_series'
 
     def __init__(self):
         self.input_datasets = []

@@ -1,4 +1,4 @@
-from calculations.hydraulic_suitability_scenario.calculate_binning import calculate_binning
+from calculations.performance_metrics.calculate_binning import calculate_binning
 
 
 class OptimalBinning:
