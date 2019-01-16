@@ -4,6 +4,7 @@ from utils.helpers import write_arrays_to_csv, transpose_csv
 from classes.performance_metric.reliability.ReliabilityTime import ReliabilityTime
 from classes.performance_metric.reliability.ReliabilityVolume import ReliabilityVolume
 from classes.performance_metric.vulnerability.Vulnerability import Vulnerability
+from classes.performance_metric.resilience.Resilience import Resilience
 
 
 class PerformanceMetricMain:
@@ -45,13 +46,15 @@ class PerformanceMetricMain:
              }
            }
 
-          reliability_value: [volume]
+          reliability_volume: [volume]
           volume: {
               file_name: string
-              volume: {
-                func_0: [Boolean]
+              value: {
+                func_0: float
+                func_1: float
              }
            }
+
            vulnerability: [value] 
            value: {
                file_name: string
@@ -59,8 +62,15 @@ class PerformanceMetricMain:
                    func0: float
                    func1: float
                }
+           }
 
-
+           resilience: [value] 
+           value: {
+               file_name: string
+               value: {
+                   func0: float
+                   func1: float
+               }
            }
         """
 
@@ -69,15 +79,18 @@ class PerformanceMetricMain:
         self.user_inputs = _op.user_inputs
         self.get_senario_binnings()
 
-        self.reliabilitytime = ReliabilityTime(
+        self.reliabilityCalc = ReliabilityTime(
             self.op_datasets, self.user_inputs)
-        self.reliability_time = self.reliabilitytime.reliability_time
+        self.reliability_time = self.reliabilityCalc.reliability_time
 
-        self.reliability_value = ReliabilityVolume(
+        self.reliability_volume = ReliabilityVolume(
             self.op_datasets, self.user_inputs).reliability_volumne
 
         self.vulnerability = Vulnerability(
-            self.reliabilitytime.limits, self.user_inputs, self.op_datasets).vulnerability
+            self.reliabilityCalc.limits, self.user_inputs, self.op_datasets).vulnerability
+
+        self.resilience = Resilience(
+            self.reliabilityCalc.limits, self.user_inputs, self.op_datasets).resilience
 
         self.save_result()
 
