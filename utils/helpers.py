@@ -34,14 +34,14 @@ def write_dict_to_csv(dict, file_name):
     transpose_csv(file_name)
 
 
-def write_single_dict_to_csv(dict, file_name):
+def write_single_dict_to_csv(dict, file_name, operation='w'):
     """ Writes dict into csv files
         {a:1, b:1, c:1 ...}
 
     """
 
     keys = dict.keys()
-    with open(file_name, 'w') as output_file:
+    with open(file_name, operation) as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerow(dict)
@@ -77,8 +77,8 @@ def read_csv_to_arrays(file_path, header=False):
                 return [row for row in reader]
 
 
-def write_arrays_to_csv(arrays, file_path):
-    with open(file_path, "w") as output:
+def write_arrays_to_csv(arrays, file_path, operation='w'):
+    with open(file_path, operation) as output:
         writer = csv.writer(output, delimiter=',', lineterminator='\n')
         for val in arrays:
             writer.writerow(val)

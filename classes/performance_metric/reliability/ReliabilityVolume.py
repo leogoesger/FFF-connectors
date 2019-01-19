@@ -50,5 +50,5 @@ class ReliabilityVolume:
 
         for data in self.reliability_volumne:
             file_path = folder_path + \
-                data["file_name"] + "_reliability_volumne.csv"
-            write_single_dict_to_csv(data['value'], file_path)
+                data["file_name"] + "_performance.csv"
+            write_single_dict_to_csv(data['value'], file_path, 'a')
