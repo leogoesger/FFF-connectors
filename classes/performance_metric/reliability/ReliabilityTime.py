@@ -81,7 +81,10 @@ class ReliabilityTime:
             file_path = folder_path + \
                 data["file_name"] + "_performance.csv"
             d = []
-            for _, value in data["timing_status"].items():
-                d.append(value)
+            d.append(["Reliability Time"])
+
+            for key, value in data["timing_status"].items():
+                d.append([key] + value)
+
             write_arrays_to_csv(d, file_path, 'a')
-            transpose_csv(file_path)
+            # transpose_csv(file_path)
