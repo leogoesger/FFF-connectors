@@ -77,4 +77,9 @@ class Resilience:
         for data in self.resilience:
             file_path = folder_path + \
                 data["file_name"] + "_performance.csv"
+
+            f = open(file_path, 'a')
+            f.write('Resilience\n')
+            f.close()
+
             write_single_dict_to_csv(data['value'], file_path, 'a')
