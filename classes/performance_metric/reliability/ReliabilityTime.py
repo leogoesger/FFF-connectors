@@ -1,6 +1,7 @@
 from inquirer import prompt, List, Text
 from utils.constants import CGREEN, CVIOLET, CEND
 from utils.helpers import write_arrays_to_csv, transpose_csv
+import datetime
 
 
 class ReliabilityTime:
@@ -79,9 +80,27 @@ class ReliabilityTime:
 
         for data in self.reliability_time:
             file_path = folder_path + \
-                data["file_name"] + "_reliability_time.csv"
+                data["file_name"] + "_performance.csv"
             d = []
-            for _, value in data["timing_status"].items():
-                d.append(value)
-            write_arrays_to_csv(d, file_path)
-            transpose_csv(file_path)
+            d.append(["Reliability Time"])
+
+            for key, value in data["timing_status"].items():
+                d.pop(0)
+                d.insert(0, ["Reliability Time"] +
+                         self.insert_date(len(value)))
+                d.append([key] + value)
+
+            write_arrays_to_csv(d, file_path, 'a')
+            # transpose_csv(file_path)
+
+    def insert_date(self, l):
+        x = datetime.datetime(
+            2001, 10, 1) if l == 365 else datetime.datetime(1999, 10, 1)
+
+        days = []
+
+        for _ in range(l):
+            days.append(x.strftime("%m") + "/" + x.strftime("%d"))
+            x = x + datetime.timedelta(days=1)
+
+        return days

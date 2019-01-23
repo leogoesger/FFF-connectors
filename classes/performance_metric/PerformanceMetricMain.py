@@ -1,4 +1,5 @@
 from classes.performance_metric.optimal_performance.OptimalMain import OptimalMain
+import os
 from classes.performance_metric.senario.Senario import Senario
 from utils.helpers import write_arrays_to_csv, transpose_csv
 from classes.performance_metric.reliability.ReliabilityTime import ReliabilityTime
@@ -79,6 +80,8 @@ class PerformanceMetricMain:
         self.user_inputs = _op.user_inputs
         self.get_senario_binnings()
 
+        self.remove_output_files()
+
         self.reliabilityCalc = ReliabilityTime(
             self.op_datasets, self.user_inputs)
         self.reliability_time = self.reliabilityCalc.reliability_time
@@ -93,6 +96,13 @@ class PerformanceMetricMain:
             self.reliabilityCalc.limits, self.user_inputs, self.op_datasets).resilience
 
         self.save_result()
+
+    def remove_output_files(self):
+        for dataset in self.op_datasets:
+            file_to_remove = 'files_output/performance_metrics/' + \
+                dataset['file_name'] + '_performance.csv'
+            if os.path.exists(file_to_remove):
+                os.remove(file_to_remove)
 
     def get_senario_binnings(self):
         for dataset in self.op_datasets:
